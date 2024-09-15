@@ -1,8 +1,7 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
-
-    // Refactor
-    const dataFetch = await $fetch('https://webapi.bps.go.id/v1/api/list/model/data/lang/ind/domain/3100/var/1207/key/11e3953affcb8e0a7a1d0cb996343eb2')
+    const props = defineProps({
+        data: Object,
+    });
 
     const zoom = ref(9);
     const coords = [
@@ -35,7 +34,7 @@
     const emit = defineEmits(['area']);
     const handleclick = (areaName: string) => {
         let index = coords.findIndex(x => x.name === areaName);
-        emit('area', areaName, Object.values(dataFetch.datacontent)[index]);
+        emit('area', areaName, Object.values(props.data.datacontent)[index]);
     };
 </script>
 

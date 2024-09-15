@@ -1,6 +1,4 @@
 <script setup>
-    import { ref } from 'vue';
-
     const options = ref(null);
 
     const props = defineProps({
@@ -8,7 +6,6 @@
     });
 
     watchEffect(() => {
-        console.log(options.value)
         options.value = {
             chart: {
                 type: 'bar'
